@@ -33,7 +33,7 @@ vector<string> split(string s, string delimiter) {
 
 int main() {
 
-	int n, ans = 0;
+	int n, ans = 0, ans2 = 0;
 	string s;
 	cin >> n;
 
@@ -54,28 +54,39 @@ int main() {
 		vector<string> games = split(s, "; ");
 		bool flag = true;
 
+		unordered_map<string, int> maxColor;
+		maxColor["red"] = 0;
+		maxColor["green"] = 0;
+		maxColor["blue"] = 0;
+
 		for(string set: games) {
 			unordered_map<string, int> colours;
 			colours["red"] = 0;
-			colours["greed"] = 0;
+			colours["green"] = 0;
 			colours["blue"] = 0;
 
 			vector<string> items  = split(set, ", ");
 
 			for(string item: items) {
 				vector<string> cx = splitCh(item, ' ');
-				if(!cx.empty())
+				if(!cx.empty()) {
 					colours[cx[1]] += stoi(cx[0]);
+					maxColor[cx[1]] = max(maxColor[cx[1]], stoi(cx[0]));
+				}
 			}
 
-			if(colours["red"] > 12 || colours["green"] > 13 || colours["blue"] > 14){
-				flag = false;
-				break;
-			}
+// part 1
+
+			// if(colours["red"] > 12 || colours["green"] > 13 || colours["blue"] > 14){
+			// 	flag = false;
+			// 	break;
+			// }
 		}
 
-		if(flag)
-			ans += i;
+		// if(flag)
+		// 	ans += i;
+
+		ans2 += (maxColor["red"] * maxColor["green"] * maxColor["blue"]);
 	}
-	cout << ans << endl;
+	cout << ans2 << endl;
 }
