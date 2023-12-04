@@ -62,12 +62,6 @@ int main() {
 				vector<int> gears = getGear(mat, i, j);
 				gears.erase( unique( gears.begin(), gears.end() ), gears.end());
 
-				if(gears.size() == 1){
-					for(auto x: gears)
-						cout << x << " ";
-					cout << endl;
-				}
-
 				if(gears.size() == 2) {
 					ans += gears[0] * gears[1];
 				}
