@@ -54,7 +54,7 @@ int main() {
 
 	cout << endl;
 	// for(long i=0; i<seeds.size(); i+=2) {
-	for(long i: seeds)
+	for(long i: seeds) {
 		// for(long j=0; j<seeds[i+1]; j++){
 			// long soil = getVal(seed_soil, seeds[i]+j);
 			long soil = getVal(seed_soil, i);
